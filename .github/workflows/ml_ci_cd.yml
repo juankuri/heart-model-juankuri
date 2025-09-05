@@ -33,6 +33,9 @@ jobs:
       run: python model/train.py
     - name: docker build
       run: docker build -t ${{secrets.DOCKER_USER}}/${{secrets.MODEL_NAME}}:${{github.sha}} .
+    - name: show images
+      run: docker images
+
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
